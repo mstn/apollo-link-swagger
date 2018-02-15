@@ -1,0 +1,48 @@
+{
+  "name": "apollo-link-swagger",
+  "version": "0.0.0",
+  "description": "Apollo Link for OpenAPI (Swagger 2.0) Restful endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "mstn@posteo.org",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/graphql": "^0.10.0",
+    "@types/isomorphic-fetch": "0.0.34",
+    "@types/jest": "^22.1.1",
+    "@types/node": "^9.4.3",
+    "@types/swagger-parser": "^4.0.2",
+    "@types/swagger-schema-official": "^2.0.8",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.7.3",
+    "jest": "^22.2.1",
+    "nock": "^9.1.6",
+    "ts-jest": "^22.0.3",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "apollo-link": "^1.0.7",
+    "apollo-link-schema": "^1.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "swagger-parser": "^4.0.2",
+    "swagger-to-graphql": "^1.2.1"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  },
+  "resolutions": {
+     "graphql": "^0.12.3"
+  }
+}

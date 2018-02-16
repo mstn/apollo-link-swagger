@@ -24,4 +24,4 @@ cp README.md lib/
 cp LICENSE lib/
 
 # publish to npm
-cd npm && npm publish --access public
+cd lib && npm publish --access public

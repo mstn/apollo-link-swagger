@@ -12,6 +12,16 @@
   },
   "author": "mstn@posteo.org",
   "license": "MIT",
+  "keywords": [
+    "graphql",
+    "apollo",
+    "apollo-link",
+    "swagger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mstn/apollo-link-swagger"
+  },
   "devDependencies": {
     "@types/graphql": "^0.10.0",
     "@types/isomorphic-fetch": "0.0.34",

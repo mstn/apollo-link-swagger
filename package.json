@@ -28,11 +28,13 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
+    "@types/url-join": "^0.8.2",
     "apollo-link": "^1.0.7",
     "apollo-link-schema": "^1.0.2",
     "isomorphic-fetch": "^2.2.1",
     "swagger-parser": "^4.0.2",
-    "swagger-to-graphql": "^1.2.1"
+    "swagger-to-graphql": "^1.2.1",
+    "url-join": "^4.0.0"
   },
   "jest": {
     "transform": {
@@ -47,6 +49,6 @@
     ]
   },
   "resolutions": {
-     "graphql": "^0.12.3"
+    "graphql": "^0.12.3"
   }
 }

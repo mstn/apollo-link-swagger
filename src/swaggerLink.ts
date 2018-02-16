@@ -7,14 +7,13 @@ import {
   NextLink,
 } from 'apollo-link';
 
-import {
-  GraphQLSchema
-} from 'graphql';
+import { SchemaLink } from 'apollo-link-schema';
 
-import { SchemaLink } from "apollo-link-schema";
+import * as urljoin from 'url-join';
 
 import { SwaggerSchema } from './';
 
+// tslint:disable-next-line
 const swaggerToGraphQL = require('swagger-to-graphql');
 
 export namespace SwaggerLink {
@@ -29,18 +28,29 @@ export async function createSwaggerLink(options: SwaggerLink.Options): Promise<A
   // TODO return errors if schema has file type
   // see // https://github.com/yarax/swagger-to-graphql/issues/19
   const schema = await swaggerToGraphQL(options.schema);
-  const GQLProxyBaseUrl = `https://${options.schema.host}`;
-  return new SchemaLink({
-    schema,
-    context: {
-      GQLProxyBaseUrl
+  const schemes = options.schema.schemes;
+  if (schemes && schemes.length > 0) {
+    const protocol = schemes.find( scheme => scheme === 'https')
+                      || schemes.find( scheme => scheme === 'http');
+    if (protocol) {
+      const baseUrl = `${protocol}://${options.schema.host}`;
+      const path = `${options.schema.basePath}`;
+      const GQLProxyBaseUrl = urljoin(baseUrl, path);
+      return new SchemaLink({
+        schema,
+        context: {
+          GQLProxyBaseUrl,
+        },
+      });
     }
-  });
+  }
+  throw new Error(`SwaggerLink supports only https and http protocols. Found: ${schemes}.`);
 }
 
 export class SwaggerLink extends ApolloLink {
-  private link: Promise<ApolloLink>;
+
   public readonly schema: SwaggerSchema;
+  private link: Promise<ApolloLink>;
 
   constructor(options: SwaggerLink.Options) {
     super();

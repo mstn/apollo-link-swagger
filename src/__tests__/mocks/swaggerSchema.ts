@@ -5,7 +5,7 @@ const swaggerSchemaMock = {
     title: 'Sample Swagger'
   },
   host: 'example.com',
-  basePath: '/',
+  basePath: '/api',
   schemes: [
     'https'
   ],

@@ -2,6 +2,8 @@ import { SwaggerLink, createSwaggerLink } from '../swaggerLink';
 
 import { execute } from 'apollo-link';
 
+import { SchemaLink } from 'apollo-link-schema';
+
 import gql from 'graphql-tag';
 
 import schema from './mocks/swaggerSchema';
@@ -11,8 +13,12 @@ const nock = require('nock');
 describe('createSwaggerLink', () => {
 
   it('creates an ApolloLink', async () => {
-    const link = await createSwaggerLink({ schema });
+    const link = await createSwaggerLink({ schema }) as SchemaLink;
     expect( link ).toBeDefined();
+    expect( link.schema ).toBeDefined();
+    expect( link.context ).toMatchObject({
+      GQLProxyBaseUrl: 'https://example.com/api'
+    });
   });
 
 });

@@ -1,9 +1,5 @@
 import 'isomorphic-fetch';
 
-import {
-  ApolloLink
-} from 'apollo-link';
-
 import { validate } from 'swagger-parser';
 
 import { SwaggerSchema } from './';

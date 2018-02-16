@@ -4,7 +4,11 @@
   "description": "Apollo Link for OpenAPI (Swagger 2.0) Restful endpoints",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "npm run lint && npm run test",
+    "deploy": "./scripts/deploy.sh",
+    "compile": "tsc",
+    "lint": "tslint 'src/*.ts'"
   },
   "author": "mstn@posteo.org",
   "license": "MIT",

@@ -1,3 +1,7 @@
+# Deploy dirs
+lib
+npm
+
 # Logs
 logs
 *.log
